@@ -21,7 +21,7 @@ const traceExporter =
     url: "https://api.honeycomb.io/v1/traces", // US instance
     //url: "https://api.eu1.honeycomb.io/v1/traces", // EU instance
     headers: {
-      "x-honeycomb-team": 'kD4Mb1QWSlfVsTg0e1oIML',
+      "x-honeycomb-team": process.env.NEXT_PUBLIC_HONEYCOMB_API_KEY,
     },
   });
 

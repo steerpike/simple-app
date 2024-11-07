@@ -19,7 +19,7 @@ export default function Observability() {
       const sdk = new HoneycombWebSDK({
         endpoint: "https://api.honeycomb.io/v1/traces",
         debug: true,
-        apiKey: 'kD4Mb1QWSlfVsTg0e1oIML',
+        apiKey: process.env.NEXT_PUBLIC_HONEYCOMB_API_KEY,
         serviceName: 'simple-app-client',
         instrumentations: [
           getWebAutoInstrumentations({
