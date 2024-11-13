@@ -18,11 +18,8 @@ const {
 
 const traceExporter =
   new OTLPTraceExporter({
-    url: "https://api.honeycomb.io/v1/traces", // US instance
-    //url: "https://api.eu1.honeycomb.io/v1/traces", // EU instance
-    headers: {
-      "x-honeycomb-team": process.env.NEXT_PUBLIC_HONEYCOMB_API_KEY,
-    },
+    //url: "https://api.honeycomb.io/v1/traces", // US instance
+    url: "https://0.0.0.0:4318", // Otel Collector
   });
 
 

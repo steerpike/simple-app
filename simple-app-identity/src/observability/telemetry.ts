@@ -5,8 +5,6 @@ import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
 import { ExpressInstrumentation } from '@opentelemetry/instrumentation-express';
 
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
-import { Console } from 'console';
 const {
   getNodeAutoInstrumentations,
 } = require('@opentelemetry/auto-instrumentations-node');
@@ -18,11 +16,8 @@ const {
 
 const traceExporter =
   new OTLPTraceExporter({
-    url: "https://api.honeycomb.io/v1/traces", // US instance
-    //url: "https://api.eu1.honeycomb.io/v1/traces", // EU instance
-    headers: {
-      "x-honeycomb-team": process.env.NEXT_PUBLIC_HONEYCOMB_API_KEY,
-    },
+    // url: "https://api.honeycomb.io/v1/traces", // US instance
+    url: "https://0.0.0.0:4318", // Otel Collector
   });
 
 
@@ -42,5 +37,5 @@ const sdk = new NodeSDK({
     new ExpressInstrumentation(),
   ],
 });
-
+console.log("Starting sdk")
 sdk.start();

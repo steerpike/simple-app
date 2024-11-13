@@ -8,8 +8,7 @@ const configDefaults = {
   ignoreNetworkEvents: true,
   enabled: true,
   propagateTraceHeaderCorsUrls: [
-    /http:\/\/localhost:3001\/identity.*/,
-    /http:\/\/localhost:3002\/video.*/,
+    /.+/g,
   ],
 };
 
@@ -17,7 +16,8 @@ export default function Observability() {
   useEffect(() => {
     try {
       const sdk = new HoneycombWebSDK({
-        endpoint: "https://api.honeycomb.io/v1/traces",
+        // endpoint: "https://api.honeycomb.io/v1/traces",
+        endpoint: "https://0.0.0.0:4318", // Otel Collector
         debug: true,
         apiKey: process.env.NEXT_PUBLIC_HONEYCOMB_API_KEY,
         serviceName: 'simple-app-client',
